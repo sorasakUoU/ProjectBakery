@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -32,11 +33,19 @@ public class SignUpActivity extends AppCompatActivity {
 
         // Check Space
         if (checkspace()) {
+            // Have Space
+            myToast("กรุณากรอกให้ครบ ค่ะ");
 
         } else {
+            // No Space
+            checkIdCard();
         }
 
     } // clickSignUp
+
+    private void myToast(String strToast) {
+        Toast.makeText(SignUpActivity.this, strToast, Toast.LENGTH_SHORT).show();
+    }
 
     private boolean checkspace() {
 
@@ -53,6 +62,15 @@ public class SignUpActivity extends AppCompatActivity {
         passwordEditText = (EditText) findViewById(R.id.editText3);
         IdCardEditText = (EditText) findViewById(R.id.editText4);
     }
+
+    private void checkIdCard() {
+        if (IdCardString.length() == 13) {
+
+        } else {
+            // IdCard False
+            myToast("รหัสบัตรไม่ถูกต้อง ค่ะ");
+        }
+    } // checkIdCard
 
 
 } //Main Class
